@@ -42,8 +42,9 @@ def build_model(tickername):
 
 @app.route('/forecast/<tickername>/<steps>')
 def forecast(tickername, steps):
-    model = MODELS[tickername]
-    return append_forecast(model, steps)
+    with open(f'models/{tickername}.pkl', 'rb') as f:
+        model = pickle.load(f)
+    return model.forecast(int(steps))
 
 
 @app.route('/plot/<tickername>')
