@@ -1,6 +1,5 @@
 import pandas as pd
 import yfinance
-from sklearn.linear_model import LinearRegression
 
 def fetch_data(ticker: str, period: str = 'max') -> pd.DataFrame:
     """
