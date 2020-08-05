@@ -14,7 +14,7 @@ def home():
 @app.route('/data/<tickername>')
 def data(tickername):
     data = fetch_data(tickername)
-    return data.to_html()
+    return data.reset_index().to_html()
 
 
 @app.route('/plot/<tickername>')
