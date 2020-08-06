@@ -1,6 +1,7 @@
 from flask import Flask
-import plotly.graph_objects as go
-from utils import fetch_data
+import plotly.express as px
+import pandas as pd
+from utils import fetch_data, build_model
 
 # Instantiate an app
 app = Flask(__name__)
@@ -19,9 +20,16 @@ def data(tickername):
 
 @app.route('/plot/<tickername>')
 def plot(tickername):
-    data = fetch_data(tickername)
-    fig = go.Figure([go.Scatter(x=data['Date'], y=data['Close'])])
+    data = fetch_data(tickername).reset_index()
+    fig = px.line(data, x='Date', y='Close')
     return fig.to_html()
+
+
+@app.route('/forecast/<tickername>/<steps>')
+def forecast(tickername, steps):
+    model = build_model(tickername)
+    fcast = model.forecast(int(steps))
+    return str(fcast[0])
 
 
 if __name__ == '__main__':
