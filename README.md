@@ -9,3 +9,14 @@ docker stop $(docker ps -a -q)
 docker rm $(docker ps -a -q)
 docker system prune -a
 ```
+
+
+```
+heroku container:login
+
+heroku create yourawesomeapp
+
+heroku container:push web --app yourawesomeapp
+
+heroku container:release web --app yourawesomeapp
+```
