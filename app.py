@@ -34,6 +34,10 @@ def forecast(tickername, steps):
 
 @app.route('/forecast_plot/<tickername>/<steps>')
 def forecast_plot(tickername, steps):
+    data = fetch_data(tickername).reset_index()
+    model = build_model(tickername)
+    fcast = model.forecast(int(steps))
+
     return 'you should have a plot of the data + forecast here'
 
 if __name__ == '__main__':
