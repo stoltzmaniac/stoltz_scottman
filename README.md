@@ -17,11 +17,13 @@ Only use the following if you have a command line interface setup (requires home
 ```
 heroku container:login
 
-heroku create yourawesomeapp
+heroku git:remote -a yourawesomeapp-soooo-cool
 
-heroku container:push web --app yourawesomeapp
+heroku create yourawesomeapp-soooo-cool
 
-heroku container:release web --app yourawesomeapp
+heroku container:push web --app yourawesomeapp-soooo-cool
+
+heroku container:release web --app yourawesomeapp-soooo-cool
 ```
 
 If you are using Heroku from the web interface. You'll simply connect it to your GitHub repository. You need to create `heroku.yml` in this case.
