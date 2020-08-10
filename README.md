@@ -23,6 +23,14 @@ heroku container:release web --app scott-is-awesome-demo-app
 ```
 
 
+Subsequent times (use the `heroku container:login` if necessary)
+```
+
+heroku container:push web --app scott-is-awesome-demo-app
+heroku container:release web --app scott-is-awesome-demo-app
+```
+
+
 Remove stop, remove, and wipe all Docker stuff from your machine. Note: This will clear everything and not just Docker images from the current directory.
 ```
 docker stop $(docker ps -a -q)

@@ -41,4 +41,4 @@ def forecast_plot(tickername, steps):
     return 'you should have a plot of the data + forecast here'
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0')
+    app.run(debug=True, host='0.0.0.0', port=5000)
