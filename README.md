@@ -18,14 +18,18 @@ Only use the following if you have a command line interface setup (requires home
 heroku container:login
 
 heroku create scott-is-awesome-demo-app
+
+heroku git:remote -a scott-is-awesome-demo-app
+
 heroku container:push web --app scott-is-awesome-demo-app
+
 heroku container:release web --app scott-is-awesome-demo-app
 ```
 
 
-Subsequent times (use the `heroku container:login` if necessary)
+Subsequent times (use the `heroku container:login` if necessary). Commit files as normal. Then...
 ```
-
+git push heroku master
 heroku container:push web --app scott-is-awesome-demo-app
 heroku container:release web --app scott-is-awesome-demo-app
 ```
