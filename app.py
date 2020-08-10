@@ -35,10 +35,16 @@ def forecast(tickername, steps):
 @app.route('/forecast_plot/<tickername>/<steps>')
 def forecast_plot(tickername, steps):
     data = fetch_data(tickername).reset_index()
+    data['Type'] = "HISTORICAL"
     model = build_model(tickername)
     fcast = model.forecast(int(steps))
-
-    return 'you should have a plot of the data + forecast here'
+    new_series = pd.date_range(data['Date'].iloc[-1], periods=int(steps))
+    fcast_df = pd.DataFrame({'Date': new_series,
+                             'Close': fcast[0],
+                             'Type': "FORECAST"})
+    final_df = pd.concat([data[['Date', 'Close', 'Type']], fcast_df])
+    fig = px.line(final_df, x='Date', y='Close', color='Type')
+    return fig.to_html()
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=5000)
