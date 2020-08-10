@@ -17,36 +17,10 @@ Only use the following if you have a command line interface setup (requires home
 ```
 heroku container:login
 
-heroku git:remote -a yourawesomeapp-soooo-cool
-
-heroku create yourawesomeapp-soooo-cool
-
-heroku container:push web --app yourawesomeapp-soooo-cool
-
-heroku container:release web --app yourawesomeapp-soooo-cool
+heroku create scott-is-awesome-demo-app
+heroku container:push web --app scott-is-awesome-demo-app
+heroku container:release web --app scott-is-awesome-demo-app
 ```
-
-If you are using Heroku from the web interface. You'll simply connect it to your GitHub repository. You need to create `heroku.yml` in this case.
-
-`heroku.yml` should be:
-
-```
-build:
-  docker:
-    web: Dockerfile
-```
-
-
-
-Steps: 
-
-  - In the top left, "Create New App"
-  - Give your app a name
-  - Create App
-  - Deployment Method: choose "GitHub"
-  - Connect the appropriate repository
-  - Decide on whether or not you want it to automatically deploy
-  - Can choose a specific branch to deploy
 
 
 Remove stop, remove, and wipe all Docker stuff from your machine. Note: This will clear everything and not just Docker images from the current directory.
