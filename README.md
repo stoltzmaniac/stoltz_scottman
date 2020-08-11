@@ -17,6 +17,8 @@ Only use the following if you have a command line interface setup (requires home
 ```
 heroku container:login
 
+heroku stack:set heroku-18
+
 heroku create scott-is-awesome-demo-app
 
 heroku git:remote -a scott-is-awesome-demo-app
